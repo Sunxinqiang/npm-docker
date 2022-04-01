@@ -1,0 +1,24 @@
+storage: /verdaccio/storage
+auth:
+  htpasswd:
+    file: /verdaccio/conf/htpasswd
+uplinks:
+  npmjs:
+   url: https://registry.npmjs.org/
+  server2:
+    url: https://registry.npm.taobao.org/
+packages:
+  '@*/*':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs server2
+  '**':
+    # 这里如果不设置在使用 npm i xxx、 npm publish 时将会提示包不存在，为了方便这里直接设置上如下两行
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+logs:
+  - {type: stdout, format: pretty, level: http}
+listen:
+  # 这个端口务必对应上
+  - 0.0.0.0:3005
