@@ -11,12 +11,15 @@ uplinks:
     url: https://registry.npm.taobao.org/
 packages:
   '@inner/*':
+    # 登录才可以访问 安装
     access: $authenticated
+    # 登录才可以发布
     publish: $authenticated
     proxy: npmjs server2
   '**':
     # 这里如果不设置在使用 npm i xxx、 npm publish 时将会提示包不存在，为了方便这里直接设置上如下两行
     access: $all
+    # 登录才可以发布
     publish: $authenticated
     proxy: npmjs
 logs:
