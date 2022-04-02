@@ -10,8 +10,8 @@ services:
       # VERDACCIO 服务端口
       - VERDACCIO_PORT=3005
       # 当前登录 linux 服务器的用户名 sudo chown -R 10001:65533 ./
-      - VERDACCIO_USER_NAME="root"
-      - VERDACCIO_USER_UID=0
+      # - VERDACCIO_USER_NAME="root"
+      # - VERDACCIO_USER_UID=0
     ports:
       # 宿主和容器的端口
       - "3005:3005"
